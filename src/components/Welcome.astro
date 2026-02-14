@@ -1,10 +1,8 @@
 ---
-import background from '../assets/background.svg';
 import profilePhoto from '../assets/kate-harman.jpg';
 ---
 
 <div id="container">
-	<img id="background" src={background.src} alt="" fetchpriority="high" />
 	<main>
 		<section id="hero">
 			<img id="profile-photo" src={profilePhoto.src} alt="Dr Kate Harman" />
@@ -40,21 +38,12 @@ import profilePhoto from '../assets/kate-harman.jpg';
 </div>
 
 <style>
-	#background {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		z-index: -1;
-		filter: blur(100px);
-	}
-
 	#container {
-		font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+		font-family: 'Inter', sans-serif;
 		min-height: 100%;
 		display: flex;
 		flex-direction: column;
+		background: linear-gradient(160deg, #b0cceb 0%, #bdd4f0 50%, #afc9e8 100%);
 	}
 
 	main {
@@ -69,42 +58,44 @@ import profilePhoto from '../assets/kate-harman.jpg';
 		display: flex;
 		align-items: center;
 		flex-direction: column;
-		max-width: 480px;
+		max-width: 520px;
 		padding: 48px 40px;
-		background: rgba(255, 255, 255, 0.85);
-		backdrop-filter: blur(20px);
-		border-radius: 24px;
-		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+		background: #ffffff;
+		border-radius: 16px;
+		border: 1px solid rgba(0, 0, 0, 0.06);
+		box-shadow:
+			0 1px 3px rgba(0, 0, 0, 0.04),
+			0 6px 24px rgba(0, 0, 0, 0.06);
 	}
 
 	#profile-photo {
-		width: 180px;
-		height: 180px;
+		width: 160px;
+		height: 160px;
 		border-radius: 50%;
 		object-fit: cover;
-		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+		box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 		margin-bottom: 24px;
 	}
 
 	h1 {
-		font-size: 32px;
+		font-size: clamp(24px, 4vw, 32px);
 		font-weight: 600;
-		color: #111827;
+		color: #1a1a1a;
 		margin: 0;
 	}
 
 	#subtitle {
-		font-size: 18px;
-		color: #6b7280;
+		font-size: clamp(15px, 2.5vw, 18px);
+		color: #5c6370;
 		margin: 8px 0 0;
 		font-weight: 500;
 	}
 
 	#bio {
-		color: #4b5563;
-		font-size: 15px;
+		color: #3d4248;
+		font-size: clamp(14px, 2vw, 15px);
 		line-height: 1.7;
-		margin: 24px 0 32px;
+		margin: 24px 0 36px;
 		text-align: left;
 		align-self: stretch;
 	}
@@ -122,36 +113,37 @@ import profilePhoto from '../assets/kate-harman.jpg';
 		text-decoration: none;
 		font-weight: 500;
 		font-size: 16px;
-		background: #111827;
-		border-radius: 12px;
-		transition: background 0.2s, transform 0.2s;
+		background: #1a365d;
+		border-radius: 8px;
+		transition: background 0.2s, box-shadow 0.2s;
 	}
 
 	#links a.button:hover {
-		background: #374151;
-		transform: translateY(-2px);
+		background: #2a4a7f;
+		box-shadow: 0 4px 12px rgba(26, 54, 93, 0.3);
 	}
 
 	footer {
 		display: flex;
 		justify-content: center;
-		gap: 32px;
+		gap: 24px;
 		padding: 24px;
 	}
 
 	footer a {
-		color: #6b7280;
-		transition: color 0.2s, transform 0.2s;
+		color: #9ca3af;
+		transition: color 0.2s;
+		padding: 8px;
 	}
 
 	footer a:hover {
-		color: #111827;
-		transform: translateY(-2px);
+		color: #1a365d;
 	}
 
 	footer a svg {
-		width: 28px;
-		height: 28px;
+		width: 24px;
+		height: 24px;
+		display: block;
 	}
 
 	@media screen and (max-width: 540px) {
@@ -161,7 +153,6 @@ import profilePhoto from '../assets/kate-harman.jpg';
 
 		#hero {
 			padding: 32px 24px;
-			border-radius: 20px;
 		}
 
 		#profile-photo {
@@ -170,20 +161,13 @@ import profilePhoto from '../assets/kate-harman.jpg';
 			margin-bottom: 20px;
 		}
 
-		h1 {
-			font-size: 26px;
-		}
-
-		#subtitle {
-			font-size: 16px;
-		}
-
-		#bio {
-			font-size: 14px;
-			margin: 20px 0 28px;
+		#links {
+			align-self: stretch;
 		}
 
 		#links a.button {
+			width: 100%;
+			justify-content: center;
 			padding: 12px 24px;
 			font-size: 15px;
 		}
