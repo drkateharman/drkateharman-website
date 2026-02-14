@@ -1,7 +1,10 @@
 ---
+import profilePhoto from '../assets/kate-harman.jpg';
+
 const title = 'Dr Kate Harman — Clinical Psychologist';
-const description = 'Dr Kate Harman is a Clinical Psychologist with over 20 years of experience across the UK and Australia, specialising in CBT, ACT, and compassion-focused therapy.';
+const description = 'Dr Kate Harman is a Clinical Psychologist at the Kidd Clinic in Melbourne, Australia, with over 20 years of experience specialising in CBT, ACT, and compassion-focused therapy.';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(profilePhoto.src, Astro.site);
 ---
 
 <!doctype html>
@@ -15,28 +18,66 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<meta name="description" content={description} />
 		<link rel="canonical" href={canonicalURL} />
 
+		<!-- Geo meta tags -->
+		<meta name="geo.region" content="AU-VIC" />
+		<meta name="geo.placename" content="Melbourne" />
+
 		<!-- Open Graph -->
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={canonicalURL} />
-		<meta property="og:image" content={new URL('/favicon.svg', Astro.site)} />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:locale" content="en_AU" />
 
 		<!-- Twitter Card -->
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
 
 		<!-- Structured Data -->
 		<script type="application/ld+json" set:html={JSON.stringify({
 			"@context": "https://schema.org",
-			"@type": "Person",
-			"name": "Dr Kate Harman",
-			"jobTitle": "Clinical Psychologist",
-			"url": "https://drkateharman.com",
-			"sameAs": [
-				"https://www.instagram.com/drkateharman",
-				"https://www.linkedin.com/in/kateharman/"
+			"@graph": [
+				{
+					"@type": "Person",
+					"@id": "https://drkateharman.com/#person",
+					"name": "Dr Kate Harman",
+					"jobTitle": "Clinical Psychologist",
+					"url": "https://drkateharman.com",
+					"sameAs": [
+						"https://www.instagram.com/drkateharman",
+						"https://www.linkedin.com/in/kateharman/"
+					]
+				},
+				{
+					"@type": "ProfessionalService",
+					"name": "Dr Kate Harman — Clinical Psychologist",
+					"provider": { "@id": "https://drkateharman.com/#person" },
+					"url": "https://drkateharman.com",
+					"areaServed": {
+						"@type": "City",
+						"name": "Melbourne",
+						"containedInPlace": {
+							"@type": "Country",
+							"name": "Australia"
+						}
+					},
+					"address": {
+						"@type": "PostalAddress",
+						"addressLocality": "Melbourne",
+						"addressRegion": "VIC",
+						"addressCountry": "AU"
+					},
+					"medicalSpecialty": "Psychology",
+					"knowsAbout": [
+						"Cognitive Behavioural Therapy (CBT)",
+						"Acceptance and Commitment Therapy (ACT)",
+						"Compassion-Focused Therapy"
+					],
+					"sameAs": "https://www.kiddclinic.com.au"
+				}
 			]
 		})} />
 	</head>
