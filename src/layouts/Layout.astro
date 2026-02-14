@@ -1,3 +1,9 @@
+---
+const title = 'Dr Kate Harman — Clinical Psychologist';
+const description = 'Dr Kate Harman is a Clinical Psychologist with over 20 years of experience across the UK and Australia, specialising in CBT, ACT, and compassion-focused therapy.';
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -5,7 +11,34 @@
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Dr Kate Harman</title>
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
+
+		<!-- Open Graph -->
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:image" content={new URL('/favicon.svg', Astro.site)} />
+
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+
+		<!-- Structured Data -->
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "Person",
+			"name": "Dr Kate Harman",
+			"jobTitle": "Clinical Psychologist",
+			"url": "https://drkateharman.com",
+			"sameAs": [
+				"https://www.instagram.com/drkateharman",
+				"https://www.linkedin.com/in/kateharman/"
+			]
+		})} />
 	</head>
 	<body>
 		<slot />

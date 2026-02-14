@@ -1,4 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
   <circle cx="64" cy="64" r="60" fill="#1a365d"/>
-  <text x="64" y="72" font-family="Georgia, serif" font-size="48" font-weight="bold" fill="#ffffff" text-anchor="middle" dominant-baseline="middle">KH</text>
+  <!-- K -->
+  <path d="M26,40 L34,40 L34,57 L53,40 L64,40 L42,60 L64,88 L53,88 L34,67 L34,88 L26,88 Z" fill="#ffffff"/>
+  <!-- H -->
+  <path d="M70,40 L78,40 L78,58 L94,58 L94,40 L102,40 L102,88 L94,88 L94,66 L78,66 L78,88 L70,88 Z" fill="#ffffff"/>
 </svg>
